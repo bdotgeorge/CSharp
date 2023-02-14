@@ -15,7 +15,11 @@ void TaskFifteen()
 {
     Console.Write("The program which takes as input a digit indicating the day of the week and checks if this day is a weekend\nEnter an integer from 1 to 7\n");
     int number = 0;
-    Console.WriteLine((int.TryParse(Console.ReadLine()!, out number) && number > 5 && number < 8) ? $"{number} -> Yes" : "No");
+    int.TryParse(Console.ReadLine()!, out number);
+    if(number < 1 || number > 7)
+        Console.Write("Not a Day of Week");
+    else
+        Console.WriteLine((number > 5) ? $"{number} -> Yes" : $"{number} -> No");
 }
 
 TaskTen();
