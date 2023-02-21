@@ -1,4 +1,6 @@
-﻿int TakeConsoleInt(string str = "Enter integer"){
+﻿using LessonFour;
+
+int TakeConsoleInt(string str = "Enter integer"){
     Console.Write($"{str}\n");
     return StrToInt(Console.ReadLine()!);
 }
@@ -48,16 +50,16 @@ void fillArray(ref int[] array){
     }
 }
 
-void PrintArray(Type t){
-    int size = t.GetType().GetElementType();
+void PrintArray(Array massive){
+    int size = massive.Length;
     for(int i = 0; i < size; i++){
-        Console.Write($"{t[i]}\n");
+        Console.Write($"{massive.GetValue(i)}\n");
     }
 }
 int[] r = CreateArray();
 fillArray(ref r);
-for (int i = 0; i < r.Length; i++)
-{
-    Console.Write($"{r[i]}\n");
-}
+PrintArray(r);
+Lesson lessonFour = new Lesson();
+//lessonFour.
+
 //Console.Write($"{SumNumInteger(-9012)}\n");
