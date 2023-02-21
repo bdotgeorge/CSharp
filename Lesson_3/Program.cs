@@ -35,7 +35,7 @@ namespace Program
             double x1 = pFirst.X, y1 = pFirst.Y, z1 = pFirst.Z;
             double x2 = pSecond.X, y2 = pSecond.Y, z2 = pSecond.Z;
             double distance = Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2) + Math.Pow((z1 - z2), 2));
-            Console.Write($"POW = {distance}\n");
+            Console.Write($"Distance between points = {distance}\n");
         }
         public static List<double> ParserTextToDouble(string text){
             List<double> result;
