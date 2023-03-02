@@ -42,26 +42,18 @@ public class LessonSix
     {
         Console.WriteLine("The program finds the point of intersection of two lines");
         double[] mas = assistant.TakeArrayInConsole();
-        var tuple = (1, 3);
+        var tuple = (CrossPoint(mas, 0, 1));
         Console.Write($"Sum Positive {tuple}\n");
     }
 
-        private (double, double) CrossPoint(int [] array, ref int min, ref int max)
+    private (double, double) CrossPoint(int [] array, ref int coefficient, ref int constanta)
     {   
         double x = 0;
         double y = 0;
-        double y2 = 0;
-
-        if(array.Length > 4)
-        {
-            for(int i = 0; i < array.Length; i +=4){
-               y = array[i + 1] * x + array[i];
-                array[i + 1];
-                array[i + 2];
-                array[i + 3];
-            }
-        }
-
+        for(int i = 0; i < array.Lenght; i +=4)
+        double k1 = 5, b1 = 2, k2 = 9, b2 = 4;
+        x = (b1 - b2) / (k2 - k1);
+        y = k2 * x + b2;
         return (x, y);
     }
 }
