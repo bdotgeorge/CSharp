@@ -101,5 +101,39 @@ public class LessonAll
         }
     }
 
+    private void quikSortArray(ref array, int size){
+            int i = 0;
+        int j = size - 1;
+    int middle = array[size / 2];
+
+    do
+    {
+        while (array[i] < middle)
+        {
+            i++;
+        }
+        while (array[j] > middle)
+        {
+            j--;
+        }
+        if (i <= j)
+        {
+            double temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+            i++;
+            j--;
+        }
+
+    } while (i < j);
+    
+    if(j > 0){
+        quikSortArray(array, j + 1);
+    }
+    if(i < size){
+        quikSortArray(&array[i], size - i);
+    }
+    }
+
 
 }
