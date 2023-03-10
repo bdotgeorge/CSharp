@@ -20,6 +20,10 @@ public class LessonAll
                 Task52();
                 EnterTaskNumber();
                 break;
+            case 58:
+                TaskMatrix58();
+                  EnterTaskNumber();
+                break;
             case 62:
                 Task62();
                 EnterTaskNumber();
@@ -138,6 +142,28 @@ public class LessonAll
                 Console.WriteLine();
             }
         }
+    }
+
+    private void TaskMatrix58(){
+        int [,] a = new int [2, 2] {{2, 2},
+                                    {3, 2}};
+        int [,] b = new int [2, 2] {{3, 4},
+                                    {3, 3}};
+        if(a.GetLenght(1) != b.GetLenght(0)){
+            Console.WriteLine("Error");
+            return;
+        }
+        int [,] c = new int [a.GetLenght(0), b.GetLenght(1)];
+
+        for(int i = 0; i < c.GetLenght(0); i++){
+            for(int j = 0; j < c.GetLenght(1); j++){
+                for(int k = 0; k < a.GetLenght(1); k++){
+                    c[i, j] += a[i, k] * b[k, j];
+                }
+        }
+        }
+        assistant.PrintArray(c);
+
     }
 
 
