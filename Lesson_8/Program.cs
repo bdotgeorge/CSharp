@@ -10,7 +10,7 @@ internal class Program
         /*var mas = ass.CreateDoubleArray();
         ass.FillDoubleArray(ref mas);
         ass.PrintArray(mas);
-        ass.quikSortArray(ref mas, 0, mas.Length - 1);
+        ass.QuickSortArray(ref mas, 0, mas.Length - 1);
         ass.PrintArray(mas);*/
     }
 }

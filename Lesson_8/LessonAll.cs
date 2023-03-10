@@ -111,7 +111,7 @@ public class LessonAll
         int column = 2;
         int facet = 2;
         int from = 10;
-        int to = 99;
+        int to = from * 2;
         int[,,] coub = new int[row, column, facet];
         for (int i = 0; i < row; i++)
         {

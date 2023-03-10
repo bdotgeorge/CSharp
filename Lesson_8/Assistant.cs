@@ -107,7 +107,7 @@ public class Assistant
         return array;
     }
 
-    public void quikSortArray(ref double[] array, int first, int last)
+    public void QuickSortArray(ref double[] array, int first, int last)
     {
         int size = array.Length;
         int mid = size / 2;
@@ -115,42 +115,37 @@ public class Assistant
 
         do
         {
-            int pivotIndex = 0;//GetPivotIndex(ref array, first, last);
+            int pivotIndex = PivotIndex(ref array, first, last);
 
-            quikSortArray(ref array, first, pivotIndex - 1);
+            QuickSortArray(ref array, first, pivotIndex - 1);
 
-            quikSortArray(ref array, pivotIndex + 1, last);
+            QuickSortArray(ref array, pivotIndex + 1, last);
 
         } while (first < last);
 
         if (last > 0)
         {
-            quikSortArray(ref array, last + 1, mid);
+            QuickSortArray(ref array, last + 1, mid);
         }
         if (first < size)
         {
-            quikSortArray(ref array, first, mid - 1);
+            QuickSortArray(ref array, first, mid - 1);
         }
     }
 
-    private static void GetPivotIndex(ref Array array, int minIndex, int maxIndex)
-    {
-        /*
+    private static void PivotIndex(ref double[] array, int minIndex, int maxIndex)
+    {     
         int pivot = minIndex - 1;
-        Type T = array.GetValue(minIndex).GetType();
         for (int i = minIndex; i <= maxIndex; i++)
         {
-            if ((T.FullName)array.GetValue(i) < (T)array.GetValue(maxIndex))
+            if (array[i] < array[maxIndex])
             {
                 pivot++;
-                double temp = (double)array.GetValue(pivot);
-                array.SetValue((double)array.GetValue(i), pivot);
-                array.SetValue(temp, i);
+                double temp = (double)array[pivot];
+                array[pivot] = array[i];
+                array[i] = temp;
   
             }
         }
-        //int a = 13;
-        //string str = Convert.ToString(a, 2)//hex;
-        //text.Split(' ').Where(i => int.TryParse(i, out _)).Select(int.Parse).ToArray();*/
     }
 }
