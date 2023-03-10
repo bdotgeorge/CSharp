@@ -51,7 +51,23 @@ public class Assistant
         int[] tempArray = new int[sizeArray];
         return tempArray;
     }
+
+    public double[] CreateDoubleArray(int sizeArray = 8)
+    {
+        double[] tempArray = new double[sizeArray];
+        return tempArray;
+    }
     public void FillArray(ref int[] array, int from = 0, int to = 10)
+    {
+        int size = array.Length;
+        for (int i = 0; i < size; i++)
+        {
+            array[i] = new Random().Next(from, to);
+
+        }
+    }
+
+    public void FillDoubleArray(ref double[] array, int from = 0, int to = 10)
     {
         int size = array.Length;
         for (int i = 0; i < size; i++)
@@ -59,6 +75,7 @@ public class Assistant
             array[i] = new Random().Next(from, to);
         }
     }
+
     public void FillMultiArray(ref double[,] array, int from = 0, int to = 10)
     {
         int row = array.GetLength(0);
@@ -89,7 +106,51 @@ public class Assistant
         double[] array = Console.ReadLine()!.Split(',', ' ').Where(i => double.TryParse(i, out _)).Select(double.Parse).ToArray();
         return array;
     }
-    //int a = 13;
-    //string str = Convert.ToString(a, 2)//hex;
-    //text.Split(' ').Where(i => int.TryParse(i, out _)).Select(int.Parse).ToArray();
+
+    public void quikSortArray(ref double[] array, int first, int last)
+    {
+        int size = array.Length;
+        int mid = size / 2;
+        double middle = array[mid];
+
+        do
+        {
+            int pivotIndex = 0;//GetPivotIndex(ref array, first, last);
+
+            quikSortArray(ref array, first, pivotIndex - 1);
+
+            quikSortArray(ref array, pivotIndex + 1, last);
+
+        } while (first < last);
+
+        if (last > 0)
+        {
+            quikSortArray(ref array, last + 1, mid);
+        }
+        if (first < size)
+        {
+            quikSortArray(ref array, first, mid - 1);
+        }
+    }
+
+    private static void GetPivotIndex(ref Array array, int minIndex, int maxIndex)
+    {
+        /*
+        int pivot = minIndex - 1;
+        Type T = array.GetValue(minIndex).GetType();
+        for (int i = minIndex; i <= maxIndex; i++)
+        {
+            if ((T.FullName)array.GetValue(i) < (T)array.GetValue(maxIndex))
+            {
+                pivot++;
+                double temp = (double)array.GetValue(pivot);
+                array.SetValue((double)array.GetValue(i), pivot);
+                array.SetValue(temp, i);
+  
+            }
+        }
+        //int a = 13;
+        //string str = Convert.ToString(a, 2)//hex;
+        //text.Split(' ').Where(i => int.TryParse(i, out _)).Select(int.Parse).ToArray();*/
+    }
 }

@@ -20,6 +20,10 @@ public class LessonAll
                 Task52();
                 EnterTaskNumber();
                 break;
+            case 62:
+                Task62();
+                EnterTaskNumber();
+                break;
             case 0:
                 Console.Write($"Exit\n");
                 break;
@@ -72,7 +76,7 @@ public class LessonAll
                     assistant.PrintArray(array);
                 }
             }
-            
+
         }
         else
         {
@@ -101,39 +105,43 @@ public class LessonAll
         }
     }
 
-    private void quikSortArray(ref array, int size){
-            int i = 0;
-        int j = size - 1;
-    int middle = array[size / 2];
-
-    do
+    private void Task62()
     {
-        while (array[i] < middle)
+        int row = 2;
+        int column = 2;
+        int facet = 2;
+        int from = 10;
+        int to = 99;
+        int[,,] coub = new int[row, column, facet];
+        for (int i = 0; i < row; i++)
         {
-            i++;
-        }
-        while (array[j] > middle)
-        {
-            j--;
-        }
-        if (i <= j)
-        {
-            double temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-            i++;
-            j--;
+            for (int j = 0; j < column; j++)
+            {
+                for (int k = 0; k < facet; k++)
+                {
+                    coub[i, j, k] = new Random().Next(from, to);
+                }
+                from = to;
+                to *= 2;
+            }
+
         }
 
-    } while (i < j);
-    
-    if(j > 0){
-        quikSortArray(array, j + 1);
+        for (int i = 0; i < row; i++)
+        {
+            for (int j = 0; j < column; j++)
+            {
+                for (int k = 0; k < facet; k++)
+                {
+                    Console.Write($"Value = {coub[i, j, k]}, index({i},{j},{k}) ");
+                }
+                Console.WriteLine();
+            }
+        }
     }
-    if(i < size){
-        quikSortArray(&array[i], size - i);
-    }
-    }
+
+
+
 
 
 }
