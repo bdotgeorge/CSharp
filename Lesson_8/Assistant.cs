@@ -133,8 +133,8 @@ public class Assistant
         }
     }
 
-    private static void PivotIndex(ref double[] array, int minIndex, int maxIndex)
-    {     
+    private static int PivotIndex(ref double[] array, int minIndex, int maxIndex)
+    {
         int pivot = minIndex - 1;
         for (int i = minIndex; i <= maxIndex; i++)
         {
@@ -144,8 +144,9 @@ public class Assistant
                 double temp = (double)array[pivot];
                 array[pivot] = array[i];
                 array[i] = temp;
-  
+
             }
         }
+        return pivot;
     }
 }

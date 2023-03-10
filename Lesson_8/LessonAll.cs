@@ -22,10 +22,22 @@ public class LessonAll
                 break;
             case 58:
                 TaskMatrix58();
-                  EnterTaskNumber();
+                EnterTaskNumber();
+                break;
+            case 60:
+                Task60();
+                EnterTaskNumber();
                 break;
             case 62:
                 Task62();
+                EnterTaskNumber();
+                break;
+            case 56:
+                Task56();
+                EnterTaskNumber();
+                break;
+            case 54:
+                Task54();
                 EnterTaskNumber();
                 break;
             case 0:
@@ -109,13 +121,13 @@ public class LessonAll
         }
     }
 
-    private void Task62()
+    private void Task60()
     {
         int row = 2;
         int column = 2;
         int facet = 2;
         int from = 10;
-        int to = from * 2;
+        int to = 15;
         int[,,] coub = new int[row, column, facet];
         for (int i = 0; i < row; i++)
         {
@@ -124,11 +136,10 @@ public class LessonAll
                 for (int k = 0; k < facet; k++)
                 {
                     coub[i, j, k] = new Random().Next(from, to);
+                    from +=10;
+                    to +=10;
                 }
-                from = to;
-                to *= 2;
             }
-
         }
 
         for (int i = 0; i < row; i++)
@@ -144,32 +155,57 @@ public class LessonAll
         }
     }
 
-    private void TaskMatrix58(){
-        double [,] a = new double [2, 2] {{2, 2},
-                                    {3, 2}};
-        double [,] b = new double [2, 2] {{3, 4},
-                                    {3, 3}};
-        if(a.GetLenght(1) != b.GetLenght(0)){
+    private void TaskMatrix58()
+    {
+        double[,] firstM = new double[2, 2] { { 2, 4 }, { 3, 2 } };
+        double[,] secondM = new double[2, 2] { { 3, 4 }, { 3, 3 } };
+        if (firstM.GetLength(1) != secondM.GetLength(0))
+        {
             Console.WriteLine("Error");
             return;
         }
-        ass.FillMultiArray(a);
-        ass.FillMultiArray(b);
-        double [,] c = new double [a.GetLenght(0), b.GetLenght(1)];
-
-        for(int i = 0; i < c.GetLenght(0); i++){
-            for(int j = 0; j < c.GetLenght(1); j++){
-                for(int k = 0; k < a.GetLenght(1); k++){
-                    c[i, j] += a[i, k] * b[k, j];
-                }
+        //assistant.FillMultiArray(ref firstM);
+        //assistant.FillMultiArray(ref secondM);
+        double[,] matix = sumMatrix(ref firstM, ref secondM);
+        for (int i = 0; i < matix.GetLength(0); i++)
+        {
+            Console.Write($" sum matrix = ");
+            for (int j = 0; j < matix.GetLength(1); j++)
+            {
+                Console.Write($"{matix[i, j]} ");
+            }
+            Console.WriteLine();
         }
-        }
-        assistant.PrintArray(c);
-
     }
 
+    private double[,] sumMatrix(ref double[,] firstM, ref double[,] secondM)
+    {
+        double[,] matrix = new double[firstM.GetLength(0), secondM.GetLength(1)];
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                for (int k = 0; k < firstM.GetLength(1); k++)
+                {
+                    matrix[i, j] += firstM[i, k] * secondM[k, j];
+                }
+            }
+        }
+        return matrix;
+    }
 
+    private void Task54()
+    {
 
+    }
+    private void Task56()
+    {
+
+    }
+    private void Task62()
+    {
+
+    }
 
 
 }
