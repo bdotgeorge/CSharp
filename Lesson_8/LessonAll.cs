@@ -145,15 +145,17 @@ public class LessonAll
     }
 
     private void TaskMatrix58(){
-        int [,] a = new int [2, 2] {{2, 2},
+        double [,] a = new double [2, 2] {{2, 2},
                                     {3, 2}};
-        int [,] b = new int [2, 2] {{3, 4},
+        double [,] b = new double [2, 2] {{3, 4},
                                     {3, 3}};
         if(a.GetLenght(1) != b.GetLenght(0)){
             Console.WriteLine("Error");
             return;
         }
-        int [,] c = new int [a.GetLenght(0), b.GetLenght(1)];
+        ass.FillMultiArray(a);
+        ass.FillMultiArray(b);
+        double [,] c = new double [a.GetLenght(0), b.GetLenght(1)];
 
         for(int i = 0; i < c.GetLenght(0); i++){
             for(int j = 0; j < c.GetLenght(1); j++){
