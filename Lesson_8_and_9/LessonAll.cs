@@ -40,6 +40,18 @@ public class LessonAll
                 Task54();
                 EnterTaskNumber();
                 break;
+            case 64:
+                Task64();
+                EnterTaskNumber();
+                break;
+            case 66:
+                Task66();
+                EnterTaskNumber();
+                break;
+            case 68:
+                Task68();
+                EnterTaskNumber();
+                break;
             case 0:
                 Console.Write($"Exit\n");
                 break;
@@ -123,6 +135,7 @@ public class LessonAll
 
     private void Task60()
     {
+        Console.WriteLine("A program that will output a three-dimensional array line by line, adding the indices of each element");
         int row = 2;
         int column = 2;
         int facet = 2;
@@ -136,8 +149,8 @@ public class LessonAll
                 for (int k = 0; k < facet; k++)
                 {
                     coub[i, j, k] = new Random().Next(from, to);
-                    from +=10;
-                    to +=10;
+                    from += 10;
+                    to += 10;
                 }
             }
         }
@@ -157,6 +170,7 @@ public class LessonAll
 
     private void TaskMatrix58()
     {
+        Console.WriteLine("A program that will find the product of two matrices.");
         double[,] firstM = new double[2, 2] { { 2, 4 }, { 3, 2 } };
         double[,] secondM = new double[2, 2] { { 3, 4 }, { 3, 3 } };
         if (firstM.GetLength(1) != secondM.GetLength(0))
@@ -196,15 +210,164 @@ public class LessonAll
 
     private void Task54()
     {
-
+        Console.WriteLine("A program that sorts in descending order the elements of each row of a two-dimensional array");
+        double[,] mas = assistant.CreateDoubleMultiArray();
+        assistant.FillMultiArray(ref mas);
+        assistant.PrintArray(mas);
+        Console.WriteLine("Sorting mass");
+        for (int i = 0; i < mas.GetLength(0); i++)
+        {
+            assistant.SortArray(ref mas, i, false);
+        }
+        assistant.PrintArray(mas);
     }
     private void Task56()
     {
-
+        Console.WriteLine("A program that will find the string with the smallest sum of elements.");
+        var mas = assistant.CreateDoubleMultiArray();
+        assistant.FillMultiArray(ref mas);
+        assistant.PrintArray(mas);
+        (int, double) sum = (0, Double.MaxValue);
+        for (int i = 0; i < mas.GetLength(0); i++)
+        {
+            double temp = 0;
+            for (int j = 0; j < mas.GetLength(1); j++)
+            {
+                temp += mas[i, j];
+            }
+            if (sum.Item2 > temp)
+            {
+                sum = (i, temp);
+            }
+        }
+        Console.Write($"row = {sum.Item1 + 1}\nsum row = {sum.Item2}\n");
     }
     private void Task62()
     {
+        Console.WriteLine("A program that will fill a spiral array.");
+        int sizeMatrix = 5;
+        var mas = assistant.CreateIntMultiArray(sizeMatrix, sizeMatrix);
+        spiral(ref mas);
+        int max = assistant.findMaxSizeElement(ref mas);
+        for (int i = 0; i < mas.GetLength(0); i++)
+        {
+            for (int j = 0; j < mas.GetLength(1); j++)
+            {
+                if (mas[i, j] < 10)
+                {
+                    Console.Write($"0{mas[i, j]} ");
+                }
+                else
+                {
+                    Console.Write($"{mas[i, j]} ");
+                }
 
+            }
+            Console.WriteLine();
+        }
+    }
+    private void spiral(ref int[,] array)
+    {
+        int size = array.GetLength(0);
+        if (size != array.GetLength(1))
+            return;
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = 0; j < size; j++)
+            {
+                int row = i + 1;
+                int column = j + 1;
+                int switcher = (column - row + size) / size;
+                int ic = Math.Abs(row - size / 2 - 1) + (row - 1) / (size / 2) * ((size - 1) % 2);
+                int jc = Math.Abs(column - size / 2 - 1) + (column - 1) / (size / 2) * ((size - 1) % 2);
+                int ring = size / 2 - (Math.Abs(ic - jc) + ic + jc) / 2;
+                int xs = row - ring + column - ring - 1;
+                int coefficient = 4 * ring * (size - ring);
+                array[i, j] = coefficient + switcher * xs + Math.Abs(switcher - 1) * (4 * (size - 2 * ring) - 2 - xs);
+            }
+        }
+    }
+    private void Task64()
+    {
+        Console.WriteLine("A program that displays all natural numbers between N and 1 or -1 for negative numbers. With the help of recursion.");
+        int N = 8;
+        Console.Write($"{FromNTo(N)}");
+        Console.WriteLine();
+    }
+
+    private string FromNTo(int N)
+    {
+        string result;
+        if (N > 0)
+        {
+            result = FromNToP(N);
+        }
+        else if (N < 0)
+        {
+            result = FromNToN(N);
+        }
+        else
+        {
+            result = N.ToString();
+        }
+        return result;
+    }
+
+    private string FromNToP(int value, int to = 1)
+    {
+        if (value == to)
+            return value.ToString();
+        return $"{value.ToString()}, {FromNToP(value - 1, to)}";
+    }
+
+    private string FromNToN(int value, int to = -1)
+    {
+        if (value == to)
+            return value.ToString();
+        return $"{value.ToString()}, {FromNToN(value + 1, to)}";
+    }
+    private void Task66()
+    {
+        Console.WriteLine("A program that finds the sum of natural elements in the interval from M to N.");
+        int M = 4;
+        int N = 8;
+        int sum = FindSumFromTo(M, N);
+        Console.Write($"{sum}");
+        Console.WriteLine();
+    }
+
+    private int FindSumFromTo(int begin, int end)
+    {
+        if (begin == end - 1)
+            return begin + end;
+        return begin + FindSumFromTo(begin + 1, end);
+    }
+    private void Task68()
+    {
+        Console.WriteLine("Ackerman function calculation program using recursion");
+        uint m = 3;
+        uint n = 2;
+        uint result = Ackerman(m, n);
+        Console.Write($"{result}");
+        Console.WriteLine();
+
+    }
+    private uint Ackerman(uint first, uint second)
+    {
+        while (first != 0)
+        {
+            if (second == 0)
+            {
+                second = 1;
+            }
+            else
+            {
+                second = Ackerman(first, second - 1);
+
+            }
+            first = first - 1;
+        }
+        return second + 1;
     }
 
 

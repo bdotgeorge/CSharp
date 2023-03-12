@@ -14,7 +14,7 @@ public class Assistant
             {
                 for (int j = 0; j < column; j++)
                 {
-                    Console.Write($"\nPrint Multi\nArray data i = {i} j = {j}\nvalue = {massive.GetValue(i, j)}; ");
+                    Console.Write($"value = {massive.GetValue(i, j)}; ");
                 }
                 Console.WriteLine();
             }
@@ -107,7 +107,7 @@ public class Assistant
         return array;
     }
 
-    public void QuickSortArray(ref double[] array, int first, int last)
+    public void QuickSortArray(ref double[] array, int first, int last) //multi Array stack over flow
     {
         int size = array.Length;
         int mid = size / 2;
@@ -149,4 +149,49 @@ public class Assistant
         }
         return pivot;
     }
+    public int findMaxSizeElement(ref int[,] mas)
+    {
+        int max = Int32.MinValue;
+        for (int i = 0; i < mas.GetLength(0); i++)
+        {
+            for (int j = 0; j < mas.GetLength(1); j++)
+            {
+                if (mas[i, j] > max)
+                    max = mas[i, j];
+            }
+        }
+        return max;
+    }
+    public void SortArray(ref double[,] array, int row, bool ascending = true)
+    {
+        if (ascending)
+        {
+            for (int j = 1; j < array.GetLength(1); j++)
+            {
+                double temp = array[row, j];
+                int size = j;
+                while (size > 0 && array[row, size - 1] > temp)
+                {
+                    array[row, size] = array[row, size - 1];
+                    size--;
+                }
+                array[row, size] = temp;
+            }
+        }
+        else
+        {
+            for (int j = 1; j < array.GetLength(1); j++)
+            {
+                double temp = array[row, j];
+                int size = j;
+                while (size > 0 && array[row, size - 1] < temp)
+                {
+                    array[row, size] = array[row, size - 1];
+                    size--;
+                }
+                array[row, size] = temp;
+            }
+        }
+    }
+
 }
